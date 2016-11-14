@@ -3,6 +3,10 @@
 ###################
 C implementation of Data Encryption Standard algorithm.
 
+Update
+======
+Run ./test.sh for simple test
+
 Overview
 ========
 The Data Encryption Standard (DES) is a block cipher (a form of shared secret encryption) that was selected by the National 
