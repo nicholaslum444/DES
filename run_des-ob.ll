@@ -1,4 +1,4 @@
-; ModuleID = 'run_des.c'
+; ModuleID = 'run_des-ob.c'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
@@ -60,7 +60,7 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
 ; <label>:6                                       ; preds = %0
   %7 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([69 x i8]* @.str, i32 0, i32 0))
   store i32 1, i32* %1
-  br label %276
+  br label %309
 
 ; <label>:8                                       ; preds = %0
   %9 = load i8*** %3, align 8
@@ -78,7 +78,7 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
 ; <label>:17                                      ; preds = %14
   %18 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([64 x i8]* @.str2, i32 0, i32 0))
   store i32 1, i32* %1
-  br label %276
+  br label %309
 
 ; <label>:19                                      ; preds = %14
   %20 = load i8*** %3, align 8
@@ -93,7 +93,7 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
 ; <label>:26                                      ; preds = %19
   %27 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([34 x i8]* @.str4, i32 0, i32 0))
   store i32 1, i32* %1
-  br label %276
+  br label %309
 
 ; <label>:28                                      ; preds = %19
   %29 = call i64 @time(i64* null) #4
@@ -122,14 +122,14 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
   %45 = load i8** %des_key, align 8
   call void @free(i8* %45) #4
   store i32 1, i32* %1
-  br label %276
+  br label %309
 
 ; <label>:46                                      ; preds = %28
   %47 = load i8** %des_key, align 8
   call void @free(i8* %47) #4
   %48 = load %struct._IO_FILE** @key_file, align 8
   %49 = call i32 @fclose(%struct._IO_FILE* %48)
-  br label %275
+  br label %308
 
 ; <label>:50                                      ; preds = %8
   %51 = load i8*** %3, align 8
@@ -145,7 +145,7 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
   %59 = load i8** %58, align 8
   %60 = call i32 @strcmp(i8* %59, i8* getelementptr inbounds ([3 x i8]* @.str7, i32 0, i32 0)) #5
   %61 = icmp eq i32 %60, 0
-  br i1 %61, label %62, label %270
+  br i1 %61, label %62, label %303
 
 ; <label>:62                                      ; preds = %56, %50
   %63 = load i32* %2, align 4
@@ -156,7 +156,7 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
   %66 = load i32* %2, align 4
   %67 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([98 x i8]* @.str8, i32 0, i32 0), i32 %66)
   store i32 1, i32* %1
-  br label %276
+  br label %309
 
 ; <label>:68                                      ; preds = %62
   %69 = load i8*** %3, align 8
@@ -171,7 +171,7 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
 ; <label>:75                                      ; preds = %68
   %76 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([37 x i8]* @.str10, i32 0, i32 0))
   store i32 1, i32* %1
-  br label %276
+  br label %309
 
 ; <label>:77                                      ; preds = %68
   %78 = call noalias i8* @malloc(i64 8) #4
@@ -191,7 +191,7 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
   %88 = load %struct._IO_FILE** @key_file, align 8
   %89 = call i32 @fclose(%struct._IO_FILE* %88)
   store i32 1, i32* %1
-  br label %276
+  br label %309
 
 ; <label>:90                                      ; preds = %77
   %91 = load %struct._IO_FILE** @key_file, align 8
@@ -208,7 +208,7 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
 ; <label>:99                                      ; preds = %90
   %100 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([40 x i8]* @.str12, i32 0, i32 0))
   store i32 1, i32* %1
-  br label %276
+  br label %309
 
 ; <label>:101                                     ; preds = %90
   %102 = load i8*** %3, align 8
@@ -223,7 +223,7 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
 ; <label>:108                                     ; preds = %101
   %109 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([42 x i8]* @.str13, i32 0, i32 0))
   store i32 1, i32* %1
-  br label %276
+  br label %309
 
 ; <label>:110                                     ; preds = %101
   store i64 0, i64* %block_count, align 8
@@ -243,234 +243,267 @@ define i32 @main(i32 %argc, i8** %argv) #0 {
   store i64 %118, i64* %finish, align 8
   %119 = load i64* %finish, align 8
   %120 = load i64* %start, align 8
-  %121 = sub nsw i64 %119, %120
-  %122 = sitofp i64 %121 to double
-  %123 = fdiv double %122, 1.000000e+06
-  store double %123, double* %time_taken, align 8
-  %124 = load i8*** %3, align 8
-  %125 = getelementptr inbounds i8** %124, i64 1
-  %126 = load i8** %125, align 8
-  %127 = call i32 @strcmp(i8* %126, i8* getelementptr inbounds ([3 x i8]* @.str6, i32 0, i32 0)) #5
-  %128 = icmp eq i32 %127, 0
-  br i1 %128, label %129, label %131
+  %121 = sub i64 0, %120
+  %122 = xor i64 %119, %121
+  %123 = and i64 %119, %121
+  %124 = add i64 %123, %123
+  %125 = add nsw i64 %122, %124
+  %126 = sub nsw i64 %119, %120
+  %127 = sitofp i64 %125 to double
+  %128 = fdiv double %127, 1.000000e+06
+  store double %128, double* %time_taken, align 8
+  %129 = load i8*** %3, align 8
+  %130 = getelementptr inbounds i8** %129, i64 1
+  %131 = load i8** %130, align 8
+  %132 = call i32 @strcmp(i8* %131, i8* getelementptr inbounds ([3 x i8]* @.str6, i32 0, i32 0)) #5
+  %133 = icmp eq i32 %132, 0
+  br i1 %133, label %134, label %136
 
-; <label>:129                                     ; preds = %110
+; <label>:134                                     ; preds = %110
   store i16 1, i16* %process_mode, align 2
-  %130 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([14 x i8]* @.str14, i32 0, i32 0))
-  br label %133
+  %135 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([14 x i8]* @.str14, i32 0, i32 0))
+  br label %138
 
-; <label>:131                                     ; preds = %110
+; <label>:136                                     ; preds = %110
   store i16 0, i16* %process_mode, align 2
-  %132 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([14 x i8]* @.str15, i32 0, i32 0))
-  br label %133
+  %137 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([14 x i8]* @.str15, i32 0, i32 0))
+  br label %138
 
-; <label>:133                                     ; preds = %131, %129
-  %134 = load %struct._IO_FILE** @input_file, align 8
-  %135 = call i32 @fseek(%struct._IO_FILE* %134, i64 0, i32 2)
-  %136 = load %struct._IO_FILE** @input_file, align 8
-  %137 = call i64 @ftell(%struct._IO_FILE* %136)
-  store i64 %137, i64* %file_size, align 8
-  %138 = load %struct._IO_FILE** @input_file, align 8
-  %139 = call i32 @fseek(%struct._IO_FILE* %138, i64 0, i32 0)
-  %140 = load i64* %file_size, align 8
-  %141 = udiv i64 %140, 8
-  %142 = load i64* %file_size, align 8
-  %143 = urem i64 %142, 8
-  %144 = icmp ne i64 %143, 0
-  %145 = select i1 %144, i32 1, i32 0
-  %146 = sext i32 %145 to i64
-  %147 = add i64 %141, %146
-  store i64 %147, i64* %number_of_blocks, align 8
-  %148 = call i64 @clock() #4
-  store i64 %148, i64* %start, align 8
-  br label %149
+; <label>:138                                     ; preds = %136, %134
+  %139 = load %struct._IO_FILE** @input_file, align 8
+  %140 = call i32 @fseek(%struct._IO_FILE* %139, i64 0, i32 2)
+  %141 = load %struct._IO_FILE** @input_file, align 8
+  %142 = call i64 @ftell(%struct._IO_FILE* %141)
+  store i64 %142, i64* %file_size, align 8
+  %143 = load %struct._IO_FILE** @input_file, align 8
+  %144 = call i32 @fseek(%struct._IO_FILE* %143, i64 0, i32 0)
+  %145 = load i64* %file_size, align 8
+  %146 = udiv i64 %145, 8
+  %147 = load i64* %file_size, align 8
+  %148 = urem i64 %147, 8
+  %149 = icmp ne i64 %148, 0
+  %150 = select i1 %149, i32 1, i32 0
+  %151 = sext i32 %150 to i64
+  %152 = xor i64 %146, %151
+  %153 = and i64 %146, %151
+  %154 = add i64 %153, %153
+  %155 = add i64 %152, %154
+  %156 = add i64 %146, %151
+  store i64 %155, i64* %number_of_blocks, align 8
+  %157 = call i64 @clock() #4
+  store i64 %157, i64* %start, align 8
+  br label %158
 
-; <label>:149                                     ; preds = %249, %133
-  %150 = load i8** %data_block, align 8
-  %151 = load %struct._IO_FILE** @input_file, align 8
-  %152 = call i64 @fread(i8* %150, i64 1, i64 8, %struct._IO_FILE* %151)
-  %153 = icmp ne i64 %152, 0
-  br i1 %153, label %154, label %251
+; <label>:158                                     ; preds = %277, %138
+  %159 = load i8** %data_block, align 8
+  %160 = load %struct._IO_FILE** @input_file, align 8
+  %161 = call i64 @fread(i8* %159, i64 1, i64 8, %struct._IO_FILE* %160)
+  %162 = icmp ne i64 %161, 0
+  br i1 %162, label %163, label %279
 
-; <label>:154                                     ; preds = %149
-  %155 = load i64* %block_count, align 8
-  %156 = add i64 %155, 1
-  store i64 %156, i64* %block_count, align 8
-  %157 = load i64* %block_count, align 8
-  %158 = load i64* %number_of_blocks, align 8
-  %159 = icmp eq i64 %157, %158
-  br i1 %159, label %160, label %239
+; <label>:163                                     ; preds = %158
+  %164 = load i64* %block_count, align 8
+  %165 = xor i64 %164, 1
+  %166 = and i64 %164, 1
+  %167 = add i64 %166, %166
+  %168 = add i64 %165, %167
+  %169 = add i64 %164, 1
+  store i64 %168, i64* %block_count, align 8
+  %170 = load i64* %block_count, align 8
+  %171 = load i64* %number_of_blocks, align 8
+  %172 = icmp eq i64 %170, %171
+  br i1 %172, label %173, label %267
 
-; <label>:160                                     ; preds = %154
-  %161 = load i16* %process_mode, align 2
-  %162 = sext i16 %161 to i32
-  %163 = icmp eq i32 %162, 1
-  br i1 %163, label %164, label %215
+; <label>:173                                     ; preds = %163
+  %174 = load i16* %process_mode, align 2
+  %175 = sext i16 %174 to i32
+  %176 = icmp eq i32 %175, 1
+  br i1 %176, label %177, label %238
 
-; <label>:164                                     ; preds = %160
-  %165 = load i64* %file_size, align 8
-  %166 = urem i64 %165, 8
-  %167 = sub i64 8, %166
-  %168 = trunc i64 %167 to i16
-  store i16 %168, i16* %padding, align 2
-  %169 = load i16* %padding, align 2
-  %170 = zext i16 %169 to i32
-  %171 = icmp slt i32 %170, 8
-  br i1 %171, label %172, label %186
+; <label>:177                                     ; preds = %173
+  %178 = load i64* %file_size, align 8
+  %179 = urem i64 %178, 8
+  %180 = sub i64 0, %179
+  %181 = xor i64 8, %180
+  %182 = and i64 8, %180
+  %183 = add i64 %182, %182
+  %184 = add i64 %181, %183
+  %185 = sub i64 8, %179
+  %186 = trunc i64 %184 to i16
+  store i16 %186, i16* %padding, align 2
+  %187 = load i16* %padding, align 2
+  %188 = zext i16 %187 to i32
+  %189 = icmp slt i32 %188, 8
+  br i1 %189, label %190, label %209
 
-; <label>:172                                     ; preds = %164
-  %173 = load i8** %data_block, align 8
-  %174 = getelementptr inbounds i8* %173, i64 8
-  %175 = load i16* %padding, align 2
-  %176 = zext i16 %175 to i32
-  %177 = sext i32 %176 to i64
-  %178 = sub i64 0, %177
-  %179 = getelementptr inbounds i8* %174, i64 %178
-  %180 = load i16* %padding, align 2
-  %181 = trunc i16 %180 to i8
-  %182 = zext i8 %181 to i32
-  %183 = trunc i32 %182 to i8
-  %184 = load i16* %padding, align 2
-  %185 = zext i16 %184 to i64
-  call void @llvm.memset.p0i8.i64(i8* %179, i8 %183, i64 %185, i32 1, i1 false)
-  br label %186
+; <label>:190                                     ; preds = %177
+  %191 = load i8** %data_block, align 8
+  %192 = getelementptr inbounds i8* %191, i64 8
+  %193 = load i16* %padding, align 2
+  %194 = zext i16 %193 to i32
+  %195 = sext i32 %194 to i64
+  %196 = sub i64 0, %195
+  %197 = xor i64 0, %196
+  %198 = and i64 0, %196
+  %199 = add i64 %198, %198
+  %200 = add i64 %197, %199
+  %201 = sub i64 0, %195
+  %202 = getelementptr inbounds i8* %192, i64 %200
+  %203 = load i16* %padding, align 2
+  %204 = trunc i16 %203 to i8
+  %205 = zext i8 %204 to i32
+  %206 = trunc i32 %205 to i8
+  %207 = load i16* %padding, align 2
+  %208 = zext i16 %207 to i64
+  call void @llvm.memset.p0i8.i64(i8* %202, i8 %206, i64 %208, i32 1, i1 false)
+  br label %209
 
-; <label>:186                                     ; preds = %172, %164
-  %187 = load i8** %data_block, align 8
-  %188 = load i8** %processed_block, align 8
-  %189 = load %struct.key_set** %key_sets, align 8
-  %190 = load i16* %process_mode, align 2
-  %191 = sext i16 %190 to i32
-  call void @process_message(i8* %187, i8* %188, %struct.key_set* %189, i32 %191)
-  %192 = load i8** %processed_block, align 8
-  %193 = load %struct._IO_FILE** @output_file, align 8
-  %194 = call i64 @fwrite(i8* %192, i64 1, i64 8, %struct._IO_FILE* %193)
-  %195 = trunc i64 %194 to i16
-  store i16 %195, i16* %bytes_written2, align 2
-  %196 = load i16* %padding, align 2
-  %197 = zext i16 %196 to i32
-  %198 = icmp eq i32 %197, 8
-  br i1 %198, label %199, label %214
+; <label>:209                                     ; preds = %190, %177
+  %210 = load i8** %data_block, align 8
+  %211 = load i8** %processed_block, align 8
+  %212 = load %struct.key_set** %key_sets, align 8
+  %213 = load i16* %process_mode, align 2
+  %214 = sext i16 %213 to i32
+  call void @process_message(i8* %210, i8* %211, %struct.key_set* %212, i32 %214)
+  %215 = load i8** %processed_block, align 8
+  %216 = load %struct._IO_FILE** @output_file, align 8
+  %217 = call i64 @fwrite(i8* %215, i64 1, i64 8, %struct._IO_FILE* %216)
+  %218 = trunc i64 %217 to i16
+  store i16 %218, i16* %bytes_written2, align 2
+  %219 = load i16* %padding, align 2
+  %220 = zext i16 %219 to i32
+  %221 = icmp eq i32 %220, 8
+  br i1 %221, label %222, label %237
 
-; <label>:199                                     ; preds = %186
-  %200 = load i8** %data_block, align 8
-  %201 = load i16* %padding, align 2
-  %202 = trunc i16 %201 to i8
-  %203 = zext i8 %202 to i32
-  %204 = trunc i32 %203 to i8
-  call void @llvm.memset.p0i8.i64(i8* %200, i8 %204, i64 8, i32 1, i1 false)
-  %205 = load i8** %data_block, align 8
-  %206 = load i8** %processed_block, align 8
-  %207 = load %struct.key_set** %key_sets, align 8
-  %208 = load i16* %process_mode, align 2
-  %209 = sext i16 %208 to i32
-  call void @process_message(i8* %205, i8* %206, %struct.key_set* %207, i32 %209)
-  %210 = load i8** %processed_block, align 8
-  %211 = load %struct._IO_FILE** @output_file, align 8
-  %212 = call i64 @fwrite(i8* %210, i64 1, i64 8, %struct._IO_FILE* %211)
-  %213 = trunc i64 %212 to i16
-  store i16 %213, i16* %bytes_written2, align 2
-  br label %214
-
-; <label>:214                                     ; preds = %199, %186
-  br label %238
-
-; <label>:215                                     ; preds = %160
-  %216 = load i8** %data_block, align 8
-  %217 = load i8** %processed_block, align 8
-  %218 = load %struct.key_set** %key_sets, align 8
-  %219 = load i16* %process_mode, align 2
-  %220 = sext i16 %219 to i32
-  call void @process_message(i8* %216, i8* %217, %struct.key_set* %218, i32 %220)
-  %221 = load i8** %processed_block, align 8
-  %222 = getelementptr inbounds i8* %221, i64 7
-  %223 = load i8* %222, align 1
-  %224 = zext i8 %223 to i16
-  store i16 %224, i16* %padding, align 2
-  %225 = load i16* %padding, align 2
-  %226 = zext i16 %225 to i32
-  %227 = icmp slt i32 %226, 8
-  br i1 %227, label %228, label %237
-
-; <label>:228                                     ; preds = %215
+; <label>:222                                     ; preds = %209
+  %223 = load i8** %data_block, align 8
+  %224 = load i16* %padding, align 2
+  %225 = trunc i16 %224 to i8
+  %226 = zext i8 %225 to i32
+  %227 = trunc i32 %226 to i8
+  call void @llvm.memset.p0i8.i64(i8* %223, i8 %227, i64 8, i32 1, i1 false)
+  %228 = load i8** %data_block, align 8
   %229 = load i8** %processed_block, align 8
-  %230 = load i16* %padding, align 2
-  %231 = zext i16 %230 to i32
-  %232 = sub nsw i32 8, %231
-  %233 = sext i32 %232 to i64
+  %230 = load %struct.key_set** %key_sets, align 8
+  %231 = load i16* %process_mode, align 2
+  %232 = sext i16 %231 to i32
+  call void @process_message(i8* %228, i8* %229, %struct.key_set* %230, i32 %232)
+  %233 = load i8** %processed_block, align 8
   %234 = load %struct._IO_FILE** @output_file, align 8
-  %235 = call i64 @fwrite(i8* %229, i64 1, i64 %233, %struct._IO_FILE* %234)
+  %235 = call i64 @fwrite(i8* %233, i64 1, i64 8, %struct._IO_FILE* %234)
   %236 = trunc i64 %235 to i16
   store i16 %236, i16* %bytes_written2, align 2
   br label %237
 
-; <label>:237                                     ; preds = %228, %215
-  br label %238
+; <label>:237                                     ; preds = %222, %209
+  br label %266
 
-; <label>:238                                     ; preds = %237, %214
-  br label %249
+; <label>:238                                     ; preds = %173
+  %239 = load i8** %data_block, align 8
+  %240 = load i8** %processed_block, align 8
+  %241 = load %struct.key_set** %key_sets, align 8
+  %242 = load i16* %process_mode, align 2
+  %243 = sext i16 %242 to i32
+  call void @process_message(i8* %239, i8* %240, %struct.key_set* %241, i32 %243)
+  %244 = load i8** %processed_block, align 8
+  %245 = getelementptr inbounds i8* %244, i64 7
+  %246 = load i8* %245, align 1
+  %247 = zext i8 %246 to i16
+  store i16 %247, i16* %padding, align 2
+  %248 = load i16* %padding, align 2
+  %249 = zext i16 %248 to i32
+  %250 = icmp slt i32 %249, 8
+  br i1 %250, label %251, label %265
 
-; <label>:239                                     ; preds = %154
-  %240 = load i8** %data_block, align 8
-  %241 = load i8** %processed_block, align 8
-  %242 = load %struct.key_set** %key_sets, align 8
-  %243 = load i16* %process_mode, align 2
-  %244 = sext i16 %243 to i32
-  call void @process_message(i8* %240, i8* %241, %struct.key_set* %242, i32 %244)
-  %245 = load i8** %processed_block, align 8
-  %246 = load %struct._IO_FILE** @output_file, align 8
-  %247 = call i64 @fwrite(i8* %245, i64 1, i64 8, %struct._IO_FILE* %246)
-  %248 = trunc i64 %247 to i16
-  store i16 %248, i16* %bytes_written2, align 2
-  br label %249
+; <label>:251                                     ; preds = %238
+  %252 = load i8** %processed_block, align 8
+  %253 = load i16* %padding, align 2
+  %254 = zext i16 %253 to i32
+  %255 = sub i32 0, %254
+  %256 = xor i32 8, %255
+  %257 = and i32 8, %255
+  %258 = add i32 %257, %257
+  %259 = add nsw i32 %256, %258
+  %260 = sub nsw i32 8, %254
+  %261 = sext i32 %259 to i64
+  %262 = load %struct._IO_FILE** @output_file, align 8
+  %263 = call i64 @fwrite(i8* %252, i64 1, i64 %261, %struct._IO_FILE* %262)
+  %264 = trunc i64 %263 to i16
+  store i16 %264, i16* %bytes_written2, align 2
+  br label %265
 
-; <label>:249                                     ; preds = %239, %238
-  %250 = load i8** %data_block, align 8
-  call void @llvm.memset.p0i8.i64(i8* %250, i8 0, i64 8, i32 1, i1 false)
-  br label %149
+; <label>:265                                     ; preds = %251, %238
+  br label %266
 
-; <label>:251                                     ; preds = %149
-  %252 = call i64 @clock() #4
-  store i64 %252, i64* %finish, align 8
-  %253 = load i8** %des_key1, align 8
-  call void @free(i8* %253) #4
-  %254 = load i8** %data_block, align 8
-  call void @free(i8* %254) #4
-  %255 = load i8** %processed_block, align 8
-  call void @free(i8* %255) #4
-  %256 = load %struct._IO_FILE** @input_file, align 8
-  %257 = call i32 @fclose(%struct._IO_FILE* %256)
-  %258 = load %struct._IO_FILE** @output_file, align 8
-  %259 = call i32 @fclose(%struct._IO_FILE* %258)
-  %260 = load i64* %finish, align 8
-  %261 = load i64* %start, align 8
-  %262 = sub nsw i64 %260, %261
-  %263 = sitofp i64 %262 to double
-  %264 = fdiv double %263, 1.000000e+06
-  store double %264, double* %time_taken, align 8
-  %265 = load i8*** %3, align 8
-  %266 = getelementptr inbounds i8** %265, i64 3
-  %267 = load i8** %266, align 8
-  %268 = load double* %time_taken, align 8
-  %269 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([50 x i8]* @.str16, i32 0, i32 0), i8* %267, double %268)
+; <label>:266                                     ; preds = %265, %237
+  br label %277
+
+; <label>:267                                     ; preds = %163
+  %268 = load i8** %data_block, align 8
+  %269 = load i8** %processed_block, align 8
+  %270 = load %struct.key_set** %key_sets, align 8
+  %271 = load i16* %process_mode, align 2
+  %272 = sext i16 %271 to i32
+  call void @process_message(i8* %268, i8* %269, %struct.key_set* %270, i32 %272)
+  %273 = load i8** %processed_block, align 8
+  %274 = load %struct._IO_FILE** @output_file, align 8
+  %275 = call i64 @fwrite(i8* %273, i64 1, i64 8, %struct._IO_FILE* %274)
+  %276 = trunc i64 %275 to i16
+  store i16 %276, i16* %bytes_written2, align 2
+  br label %277
+
+; <label>:277                                     ; preds = %267, %266
+  %278 = load i8** %data_block, align 8
+  call void @llvm.memset.p0i8.i64(i8* %278, i8 0, i64 8, i32 1, i1 false)
+  br label %158
+
+; <label>:279                                     ; preds = %158
+  %280 = call i64 @clock() #4
+  store i64 %280, i64* %finish, align 8
+  %281 = load i8** %des_key1, align 8
+  call void @free(i8* %281) #4
+  %282 = load i8** %data_block, align 8
+  call void @free(i8* %282) #4
+  %283 = load i8** %processed_block, align 8
+  call void @free(i8* %283) #4
+  %284 = load %struct._IO_FILE** @input_file, align 8
+  %285 = call i32 @fclose(%struct._IO_FILE* %284)
+  %286 = load %struct._IO_FILE** @output_file, align 8
+  %287 = call i32 @fclose(%struct._IO_FILE* %286)
+  %288 = load i64* %finish, align 8
+  %289 = load i64* %start, align 8
+  %290 = sub i64 0, %289
+  %291 = xor i64 %288, %290
+  %292 = and i64 %288, %290
+  %293 = add i64 %292, %292
+  %294 = add nsw i64 %291, %293
+  %295 = sub nsw i64 %288, %289
+  %296 = sitofp i64 %294 to double
+  %297 = fdiv double %296, 1.000000e+06
+  store double %297, double* %time_taken, align 8
+  %298 = load i8*** %3, align 8
+  %299 = getelementptr inbounds i8** %298, i64 3
+  %300 = load i8** %299, align 8
+  %301 = load double* %time_taken, align 8
+  %302 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([50 x i8]* @.str16, i32 0, i32 0), i8* %300, double %301)
   store i32 0, i32* %1
-  br label %276
+  br label %309
 
-; <label>:270                                     ; preds = %56
-  %271 = load i8*** %3, align 8
-  %272 = getelementptr inbounds i8** %271, i64 1
-  %273 = load i8** %272, align 8
-  %274 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([62 x i8]* @.str17, i32 0, i32 0), i8* %273)
+; <label>:303                                     ; preds = %56
+  %304 = load i8*** %3, align 8
+  %305 = getelementptr inbounds i8** %304, i64 1
+  %306 = load i8** %305, align 8
+  %307 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([62 x i8]* @.str17, i32 0, i32 0), i8* %306)
   store i32 1, i32* %1
-  br label %276
+  br label %309
 
-; <label>:275                                     ; preds = %46
+; <label>:308                                     ; preds = %46
   store i32 0, i32* %1
-  br label %276
+  br label %309
 
-; <label>:276                                     ; preds = %275, %270, %251, %108, %99, %86, %75, %65, %41, %26, %17, %6
-  %277 = load i32* %1
-  ret i32 %277
+; <label>:309                                     ; preds = %308, %303, %279, %108, %99, %86, %75, %65, %41, %26, %17, %6
+  %310 = load i32* %1
+  ret i32 %310
 }
 
 declare i32 @printf(i8*, ...) #1
